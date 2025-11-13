@@ -124,6 +124,83 @@ def manage_proevents_on_panel_state_change():
     except Exception as e:
         logger.error(f"Error in manage_proevents_on_panel_state_change: {e}")
 
+def manage_proevents_on_panel_state_change():
+    """
+    Fixed logic (final):
+    ---------------------
+    - When panel is Armed   -> Make ONLY previously ignored (UI-selected) ProEvents Reactive (0)
+    - When panel is Disarmed -> Make ONLY ignored (UI-selected) ProEvents Non-Reactive (1)
+    - Cache ensures it runs only on state change
+    """
+    try:
+        live_states = proserver_service.get_all_live_building_arm_states()
+        cached_states = cache_service.get_cache_value("panel_state_cache") or {}
+        new_cached_states = cached_states.copy()
+
+        for building_id, is_armed in live_states.items():
+            prev_state = cached_states.get(str(building_id))
+            logger.info(f"[DEBUG] Building {building_id}: current={is_armed}, previous={prev_state}")
+
+            # First run → store and continue
+            if prev_state is None:
+                new_cached_states[str(building_id)] = is_armed
+                continue
+
+            # No change → skip
+            if prev_state == is_armed:
+                continue
+
+            # Panel state changed
+            logger.info(f"[Building {building_id}] Panel state changed -> {'ARMED' if is_armed else 'DISARMED'}")
+
+            # Fetch all ProEvents for this building
+            all_proevents = proserver_service.get_proevents_for_building_from_db(building_id)
+            if not all_proevents:
+                logger.warning(f"[Building {building_id}] No ProEvents found in DB.")
+                new_cached_states[str(building_id)] = is_armed
+                continue
+
+            # Load ignored ProEvents from SQLite (UI selections)
+            ignored_map = sqlite_config.get_ignored_proevents()
+            ignored_ids = {
+                pid for pid, data in ignored_map.items()
+                if data.get("building_frk") == building_id and data.get("ignore_on_disarm")
+            }
+
+            # When Armed → only previously ignored become Reactive again
+            if is_armed:
+                if ignored_ids:
+                    target_states = [{"id": pid, "state": 0} for pid in ignored_ids]
+                    success = proserver_service.set_proevent_reactive_state_bulk(target_states)
+                    if success:
+                        logger.info(f"[Building {building_id}] Panel ARMED -> {len(target_states)} previously ignored ProEvents set Reactive.")
+                    else:
+                        logger.error(f"[Building {building_id}] Failed to reactivate previously ignored ProEvents.")
+                else:
+                    logger.info(f"[Building {building_id}] Panel ARMED -> No previously ignored ProEvents to change.")
+
+                new_cached_states[str(building_id)] = is_armed
+                continue
+
+            # When Disarmed → only ignored ones become Non-Reactive
+            if not is_armed and ignored_ids:
+                target_states = [{"id": pid, "state": 1} for pid in ignored_ids]
+                success = proserver_service.set_proevent_reactive_state_bulk(target_states)
+                if success:
+                    logger.info(f"[Building {building_id}] Panel DISARMED -> {len(target_states)} selected ProEvents set Non-Reactive.")
+                else:
+                    logger.error(f"[Building {building_id}] Failed to disarm selected ProEvents.")
+            else:
+                logger.info(f"[Building {building_id}] Panel DISARMED -> No ignored ProEvents to change.")
+
+            new_cached_states[str(building_id)] = is_armed
+
+        # Update cache
+        cache_service.set_cache_value("panel_state_cache", new_cached_states)
+
+    except Exception as e:
+        logger.error(f"Error in manage_proevents_on_panel_state_change: {e}")
+
 
 def check_and_manage_scheduled_states():
     """

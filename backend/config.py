@@ -3,18 +3,17 @@
 import os
 import logging
 import urllib.parse
-import json # New Import for handling decrypted configuration data
+import json
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 from contextlib import contextmanager
-from .utils.decrypt_utils import decrypt_data 
+from utils.decrypt_utils import decrypt_data  # Changed from relative import
 
 # Load environment variables (for general, unencrypted app config like APP_HOST)
 load_dotenv()
 
 ENCRYPTED_CONFIG_PATH = os.getenv("ENCRYPTED_CONFIG_PATH", "encrypted_db_config.bin")
-
 PRIVATE_KEY_PATH = os.getenv("PRIVATE_KEY_PATH", "private_key.pem") 
 
 # -----------------------------
@@ -29,7 +28,6 @@ logger = logging.getLogger("config")
 # -----------------------------
 # Application Configuration (Read from unencrypted sources)
 # -----------------------------
-# These remain as environment variables or simple defaults
 APP_HOST = os.getenv("APP_HOST", "0.0.0.0")
 APP_PORT = int(os.getenv("APP_PORT", 7070))
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
@@ -42,10 +40,10 @@ def load_and_decrypt_db_config():
     
     # 1. Check for required files
     if not os.path.exists(PRIVATE_KEY_PATH):
-        logger.error(f" Critical Error: RSA Private Key not found at {PRIVATE_KEY_PATH}")
+        logger.error(f"❌ Critical Error: RSA Private Key not found at {PRIVATE_KEY_PATH}")
         raise FileNotFoundError(f"RSA Private Key not found: {PRIVATE_KEY_PATH}. Ensure it is placed in the backend/ folder.")
     if not os.path.exists(ENCRYPTED_CONFIG_PATH):
-        logger.error(f" Critical Error: Encrypted config file not found at {ENCRYPTED_CONFIG_PATH}")
+        logger.error(f"❌ Critical Error: Encrypted config file not found at {ENCRYPTED_CONFIG_PATH}")
         raise FileNotFoundError(f"Encrypted config file not found: {ENCRYPTED_CONFIG_PATH}. Ensure the GUI tool saved it to the backend/ folder.")
 
     # 2. Load the encrypted payload string
@@ -55,10 +53,10 @@ def load_and_decrypt_db_config():
     # 3. Decrypt the payload
     try:
         decrypted_data = decrypt_data(encrypted_payload, PRIVATE_KEY_PATH)
-        logger.info(" Database configuration decrypted successfully.")
+        logger.info("✅ Database configuration decrypted successfully.")
         return decrypted_data
     except Exception as e:
-        logger.error(f" Decryption failed. Cannot start application. Error: {e}")
+        logger.error(f"❌ Decryption failed. Cannot start application. Error: {e}")
         # Stop the application if decryption fails (security measure)
         raise Exception("Failed to decrypt critical database configuration.")
 

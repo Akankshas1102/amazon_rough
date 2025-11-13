@@ -34,69 +34,87 @@ class StreamToLogger:
 
 
 _log_lock = Lock()
+_root_logger_configured = False
 
 
 def get_logger(name):
     """
     Creates and returns a thread-safe logger that logs to both console and file.
-    FIXED: Now properly creates the logs directory and file.
     """
+    global _root_logger_configured
+    
     logger = logging.getLogger(name)
 
-    if not logger.hasHandlers():
+    # Configure root logger only once
+    if not _root_logger_configured:
         # Get the backend directory (where this logger.py file is located)
         backend_dir = os.path.dirname(os.path.abspath(__file__))
         
         # Create logs directory path
         log_dir = os.path.join(backend_dir, "logs")
         
-        # CRITICAL FIX: Ensure the directory exists with proper permissions
+        # Ensure the directory exists with proper permissions
         try:
             os.makedirs(log_dir, exist_ok=True)
-            print(f" Log directory ensured at: {log_dir}")
+            print(f"✅ Log directory ensured at: {log_dir}")
         except Exception as e:
-            print(f" Failed to create log directory: {e}")
+            print(f"❌ Failed to create log directory: {e}")
             # Fall back to current directory if backend/logs fails
             log_dir = "."
-            print(f" Using fallback log directory: {log_dir}")
+            print(f"⚠️ Using fallback log directory: {log_dir}")
 
         # Full path to log file
         log_file = os.path.join(log_dir, "app.log")
-        print(f" Log file will be created at: {log_file}")
+        print(f"📝 Log file will be created at: {log_file}")
+
+        # Configure root logger
+        root_logger = logging.getLogger()
+        root_logger.setLevel(logging.DEBUG)
+        
+        # Remove any existing handlers
+        root_logger.handlers.clear()
 
         # File handler with rotation
         try:
             file_handler = RotatingFileHandler(
                 log_file,
-                maxBytes=5 * 1024 * 1024,  # 5MB
-                backupCount=3,
+                maxBytes=10 * 1024 * 1024,  # 10MB
+                backupCount=5,
                 encoding="utf-8"
             )
-            formatter = logging.Formatter(
-                "%(asctime)s - %(levelname)s - %(name)s - %(message)s"
-            )
-            file_handler.setFormatter(formatter)
+            file_handler.setLevel(logging.DEBUG)
             
             # Console handler for live logs
             console_handler = logging.StreamHandler(sys.stdout)
+            console_handler.setLevel(logging.DEBUG)
+            
+            # Detailed formatter
+            formatter = logging.Formatter(
+                "%(asctime)s - %(levelname)s - %(name)s - %(funcName)s:%(lineno)d - %(message)s",
+                datefmt="%Y-%m-%d %H:%M:%S"
+            )
+            
+            file_handler.setFormatter(formatter)
             console_handler.setFormatter(formatter)
 
-            # Add both handlers
-            logger.addHandler(file_handler)
-            logger.addHandler(console_handler)
+            # Add both handlers to root logger
+            root_logger.addHandler(file_handler)
+            root_logger.addHandler(console_handler)
             
-            logger.setLevel(logging.DEBUG)
-            
-            print(f"✅ Logger initialized successfully for {name}")
+            print(f"✅ Root logger initialized successfully")
+            _root_logger_configured = True
             
         except Exception as e:
             print(f"❌ Failed to create log handlers: {e}")
             # At minimum, add console handler
             console_handler = logging.StreamHandler(sys.stdout)
-            formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(name)s - %(message)s")
+            formatter = logging.Formatter(
+                "%(asctime)s - %(levelname)s - %(name)s - %(message)s"
+            )
             console_handler.setFormatter(formatter)
-            logger.addHandler(console_handler)
-            logger.setLevel(logging.DEBUG)
+            root_logger.addHandler(console_handler)
+            root_logger.setLevel(logging.DEBUG)
+            _root_logger_configured = True
 
     return logger
 
