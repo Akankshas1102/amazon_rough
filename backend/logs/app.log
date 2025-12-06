@@ -15847,3 +15847,76 @@ WHERE dvcDeviceType_FRK = 138
 2025-12-04 14:13:15 - INFO - routes - list_buildings:65 - ✅ Returning 0 buildings
 2025-12-04 14:13:15 - INFO - main - log_requests:184 - ⮐ Response: GET /api/buildings - Status: 200
 2025-12-04 14:13:15 - INFO - main - lifespan:63 - Application shutting down...
+2025-12-06 14:14:47 - INFO - main - <module>:36 - ==================================================
+2025-12-06 14:14:47 - INFO - main - <module>:37 - Application Initialization Started
+2025-12-06 14:14:47 - INFO - main - <module>:38 - ==================================================
+2025-12-06 14:14:47 - INFO - main - <module>:68 - Setting up CORS middleware...
+2025-12-06 14:14:47 - INFO - main - <module>:76 - ✅ CORS middleware configured
+2025-12-06 14:14:47 - INFO - main - <module>:83 - Backend directory: C:\Users\Akanksha\Desktop\Amazon_admin\backend
+2025-12-06 14:14:47 - INFO - main - <module>:84 - Root directory: C:\Users\Akanksha\Desktop\Amazon_admin
+2025-12-06 14:14:47 - INFO - main - <module>:85 - Frontend directory: C:\Users\Akanksha\Desktop\Amazon_admin\frontend
+2025-12-06 14:14:47 - INFO - main - <module>:91 - ✅ Frontend directory found at: C:\Users\Akanksha\Desktop\Amazon_admin\frontend
+2025-12-06 14:14:47 - INFO - main - <module>:161 - Registering API routes...
+2025-12-06 14:14:47 - INFO - main - <module>:163 - ✅ API routes registered
+2025-12-06 14:14:47 - INFO - main - <module>:166 - Registering Admin routes...
+2025-12-06 14:14:47 - INFO - main - <module>:168 - ✅ Admin routes registered
+2025-12-06 14:14:47 - INFO - main - lifespan:44 - Application starting up...
+2025-12-06 14:14:47 - INFO - main - lifespan:45 - Initializing SQLite database...
+2025-12-06 14:14:47 - INFO - database_setup - init_sqlite_db:24 - Connecting to database... ensuring tables exist.
+2025-12-06 14:14:47 - INFO - database_setup - init_sqlite_db:107 - ✅ SQLite database tables verified successfully.
+2025-12-06 14:14:47 - INFO - database_setup - create_default_admin:156 - ✅ Found 1 existing admin user(s)
+2025-12-06 14:14:47 - INFO - main - lifespan:48 - ✅ SQLite database initialized successfully
+2025-12-06 14:14:47 - INFO - main - lifespan:53 - Starting scheduler thread...
+2025-12-06 14:14:47 - INFO - services.scheduler_service - start_scheduler:61 - Starting scheduler in background thread...
+2025-12-06 14:14:47 - INFO - services.scheduler_service - run_scheduler:45 - Scheduler thread started
+2025-12-06 14:14:47 - INFO - services.scheduler_service - start_scheduler:64 - ✅ Scheduler thread started successfully
+2025-12-06 14:14:47 - INFO - services.scheduler_service - run_scheduler:47 - Scheduled job registered to run every 1 minute
+2025-12-06 14:14:47 - INFO - main - lifespan:56 - ✅ Scheduler started successfully
+2025-12-06 14:14:59 - INFO - main - log_requests:179 - ⮕ Incoming request: GET /
+2025-12-06 14:14:59 - DEBUG - main - log_requests:180 - Request headers: {'host': '127.0.0.1:7070', 'connection': 'keep-alive', 'sec-ch-ua': '"Brave";v="143", "Chromium";v="143", "Not A(Brand";v="24"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Windows"', 'upgrade-insecure-requests': '1', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8', 'sec-gpc': '1', 'accept-language': 'en-US,en;q=0.8', 'sec-fetch-site': 'none', 'sec-fetch-mode': 'navigate', 'sec-fetch-user': '?1', 'sec-fetch-dest': 'document', 'accept-encoding': 'gzip, deflate, br, zstd', 'if-none-match': '"76fb307792157002df4b06d49393482d"', 'if-modified-since': 'Thu, 04 Dec 2025 07:35:09 GMT'}
+2025-12-06 14:14:59 - DEBUG - main - serve_home:137 - Serving home page (index.html)
+2025-12-06 14:14:59 - INFO - main - log_requests:184 - ⮐ Response: GET / - Status: 200
+2025-12-06 14:14:59 - INFO - main - log_requests:179 - ⮕ Incoming request: GET /app.js
+2025-12-06 14:14:59 - DEBUG - main - log_requests:180 - Request headers: {'host': '127.0.0.1:7070', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'sec-ch-ua': '"Brave";v="143", "Chromium";v="143", "Not A(Brand";v="24"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'sec-gpc': '1', 'accept-language': 'en-US,en;q=0.8', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'no-cors', 'sec-fetch-dest': 'script', 'referer': 'http://127.0.0.1:7070/', 'accept-encoding': 'gzip, deflate, br, zstd', 'if-none-match': '"e88a7b9fdfff2785ef539f0a8a9655f6"', 'if-modified-since': 'Thu, 04 Dec 2025 07:57:49 GMT'}
+2025-12-06 14:14:59 - INFO - main - log_requests:179 - ⮕ Incoming request: GET /style.css
+2025-12-06 14:14:59 - DEBUG - main - log_requests:180 - Request headers: {'host': '127.0.0.1:7070', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'sec-ch-ua': '"Brave";v="143", "Chromium";v="143", "Not A(Brand";v="24"', 'sec-ch-ua-mobile': '?0', 'accept': 'text/css,*/*;q=0.1', 'sec-gpc': '1', 'accept-language': 'en-US,en;q=0.8', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'no-cors', 'sec-fetch-dest': 'style', 'referer': 'http://127.0.0.1:7070/', 'accept-encoding': 'gzip, deflate, br, zstd', 'if-none-match': '"27cf2ad18ed586007085cf8c16958f99"', 'if-modified-since': 'Thu, 04 Dec 2025 07:44:46 GMT'}
+2025-12-06 14:14:59 - INFO - main - log_requests:184 - ⮐ Response: GET /app.js - Status: 200
+2025-12-06 14:14:59 - INFO - main - log_requests:184 - ⮐ Response: GET /style.css - Status: 200
+2025-12-06 14:14:59 - INFO - main - log_requests:179 - ⮕ Incoming request: GET /api/buildings
+2025-12-06 14:14:59 - DEBUG - main - log_requests:180 - Request headers: {'host': '127.0.0.1:7070', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'sec-ch-ua': '"Brave";v="143", "Chromium";v="143", "Not A(Brand";v="24"', 'content-type': 'application/json', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'sec-gpc': '1', 'accept-language': 'en-US,en;q=0.8', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://127.0.0.1:7070/', 'accept-encoding': 'gzip, deflate, br, zstd'}
+2025-12-06 14:14:59 - INFO - main - log_requests:179 - ⮕ Incoming request: GET /api/admin/queries
+2025-12-06 14:14:59 - DEBUG - main - log_requests:180 - Request headers: {'host': '127.0.0.1:7070', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTc2NDg2MDU2MH0._mCtWUfGNV1fDq9vf3J_Xhdj4-cFTHEKCg8y825TMGw', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'sec-ch-ua': '"Brave";v="143", "Chromium";v="143", "Not A(Brand";v="24"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'sec-gpc': '1', 'accept-language': 'en-US,en;q=0.8', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'cors', 'sec-fetch-dest': 'empty', 'referer': 'http://127.0.0.1:7070/', 'accept-encoding': 'gzip, deflate, br, zstd'}
+2025-12-06 14:14:59 - WARNING - auth - decode_access_token:96 - Token has expired
+2025-12-06 14:14:59 - INFO - routes - list_buildings:45 - GET /buildings called - Fetching all buildings...
+2025-12-06 14:14:59 - INFO - services.proserver_service - get_all_distinct_buildings_from_db:226 - Connecting to ProServer DB to get distinct buildings...
+2025-12-06 14:14:59 - INFO - main - log_requests:184 - ⮐ Response: GET /api/admin/queries - Status: 401
+2025-12-06 14:14:59 - INFO - query_config - get_query:140 - Query 'buildings' not found in DB, using default
+2025-12-06 14:14:59 - INFO - main - log_requests:179 - ⮕ Incoming request: GET /login
+2025-12-06 14:14:59 - DEBUG - main - log_requests:180 - Request headers: {'host': '127.0.0.1:7070', 'connection': 'keep-alive', 'sec-ch-ua': '"Brave";v="143", "Chromium";v="143", "Not A(Brand";v="24"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Windows"', 'upgrade-insecure-requests': '1', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8', 'sec-gpc': '1', 'accept-language': 'en-US,en;q=0.8', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'navigate', 'sec-fetch-dest': 'document', 'referer': 'http://127.0.0.1:7070/', 'accept-encoding': 'gzip, deflate, br, zstd', 'if-none-match': '"133a4e9d1e3f5b7f972e8bd1a36cddef"', 'if-modified-since': 'Thu, 04 Dec 2025 07:01:00 GMT'}
+2025-12-06 14:14:59 - DEBUG - main - serve_login:145 - Serving login page (login.html)
+2025-12-06 14:14:59 - INFO - main - log_requests:184 - ⮐ Response: GET /login - Status: 200
+2025-12-06 14:14:59 - INFO - main - log_requests:179 - ⮕ Incoming request: GET /static/login.js
+2025-12-06 14:14:59 - DEBUG - main - log_requests:180 - Request headers: {'host': '127.0.0.1:7070', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'sec-ch-ua': '"Brave";v="143", "Chromium";v="143", "Not A(Brand";v="24"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'sec-gpc': '1', 'accept-language': 'en-US,en;q=0.8', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'no-cors', 'sec-fetch-dest': 'script', 'referer': 'http://127.0.0.1:7070/login', 'accept-encoding': 'gzip, deflate, br, zstd'}
+2025-12-06 14:14:59 - INFO - main - log_requests:184 - ⮐ Response: GET /static/login.js - Status: 404
+2025-12-06 14:14:59 - INFO - main - log_requests:179 - ⮕ Incoming request: GET /favicon.ico
+2025-12-06 14:14:59 - DEBUG - main - log_requests:180 - Request headers: {'host': '127.0.0.1:7070', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'sec-ch-ua': '"Brave";v="143", "Chromium";v="143", "Not A(Brand";v="24"', 'sec-ch-ua-mobile': '?0', 'accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8', 'sec-gpc': '1', 'accept-language': 'en-US,en;q=0.8', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'no-cors', 'sec-fetch-dest': 'image', 'referer': 'http://127.0.0.1:7070/login', 'accept-encoding': 'gzip, deflate, br, zstd'}
+2025-12-06 14:14:59 - INFO - main - log_requests:184 - ⮐ Response: GET /favicon.ico - Status: 404
+2025-12-06 14:15:00 - INFO - services.proserver_service - get_all_distinct_buildings_from_db:255 - Successfully fetched 177 distinct buildings.
+2025-12-06 14:15:00 - DEBUG - routes - list_buildings:48 - Retrieved 177 buildings from database
+2025-12-06 14:15:00 - DEBUG - routes - list_buildings:51 - Retrieved schedules for 0 buildings from SQLite
+2025-12-06 14:15:00 - INFO - routes - list_buildings:65 - ✅ Returning 177 buildings
+2025-12-06 14:15:00 - INFO - main - log_requests:184 - ⮐ Response: GET /api/buildings - Status: 200
+2025-12-06 14:15:06 - INFO - main - log_requests:179 - ⮕ Incoming request: GET /login
+2025-12-06 14:15:06 - DEBUG - main - log_requests:180 - Request headers: {'host': '127.0.0.1:7070', 'connection': 'keep-alive', 'sec-ch-ua': '"Brave";v="143", "Chromium";v="143", "Not A(Brand";v="24"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': '"Windows"', 'upgrade-insecure-requests': '1', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8', 'sec-gpc': '1', 'accept-language': 'en-US,en;q=0.8', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'navigate', 'sec-fetch-user': '?1', 'sec-fetch-dest': 'document', 'referer': 'http://127.0.0.1:7070/login', 'accept-encoding': 'gzip, deflate, br, zstd', 'if-none-match': '"133a4e9d1e3f5b7f972e8bd1a36cddef"', 'if-modified-since': 'Thu, 04 Dec 2025 07:01:00 GMT'}
+2025-12-06 14:15:06 - DEBUG - main - serve_login:145 - Serving login page (login.html)
+2025-12-06 14:15:06 - INFO - main - log_requests:184 - ⮐ Response: GET /login - Status: 200
+2025-12-06 14:15:06 - INFO - main - log_requests:179 - ⮕ Incoming request: GET /static/login.js
+2025-12-06 14:15:06 - DEBUG - main - log_requests:180 - Request headers: {'host': '127.0.0.1:7070', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'sec-ch-ua': '"Brave";v="143", "Chromium";v="143", "Not A(Brand";v="24"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'sec-gpc': '1', 'accept-language': 'en-US,en;q=0.8', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'no-cors', 'sec-fetch-dest': 'script', 'referer': 'http://127.0.0.1:7070/login?username=admin&password=admin123', 'accept-encoding': 'gzip, deflate, br, zstd'}
+2025-12-06 14:15:06 - INFO - main - log_requests:184 - ⮐ Response: GET /static/login.js - Status: 404
+2025-12-06 14:15:13 - INFO - main - log_requests:179 - ⮕ Incoming request: GET /static/login.js
+2025-12-06 14:15:13 - DEBUG - main - log_requests:180 - Request headers: {'host': '127.0.0.1:7070', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'sec-ch-ua': '"Brave";v="143", "Chromium";v="143", "Not A(Brand";v="24"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'sec-gpc': '1', 'accept-language': 'en-US,en;q=0.8', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'no-cors', 'sec-fetch-dest': 'script', 'referer': 'http://127.0.0.1:7070/login?username=admin&password=admin123', 'accept-encoding': 'gzip, deflate, br, zstd'}
+2025-12-06 14:15:13 - INFO - main - log_requests:184 - ⮐ Response: GET /static/login.js - Status: 404
+2025-12-06 14:15:19 - INFO - main - log_requests:179 - ⮕ Incoming request: GET /static/login.js
+2025-12-06 14:15:19 - DEBUG - main - log_requests:180 - Request headers: {'host': '127.0.0.1:7070', 'connection': 'keep-alive', 'sec-ch-ua-platform': '"Windows"', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'sec-ch-ua': '"Brave";v="143", "Chromium";v="143", "Not A(Brand";v="24"', 'sec-ch-ua-mobile': '?0', 'accept': '*/*', 'sec-gpc': '1', 'accept-language': 'en-US,en;q=0.8', 'sec-fetch-site': 'same-origin', 'sec-fetch-mode': 'no-cors', 'sec-fetch-dest': 'script', 'referer': 'http://127.0.0.1:7070/login?username=admin&password=admin123', 'accept-encoding': 'gzip, deflate, br, zstd'}
+2025-12-06 14:15:19 - INFO - main - log_requests:184 - ⮐ Response: GET /static/login.js - Status: 404
+2025-12-06 14:15:41 - INFO - main - lifespan:63 - Application shutting down...
